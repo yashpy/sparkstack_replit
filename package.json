@@ -1,0 +1,23 @@
+{
+  "name": "sparkstack",
+  "version": "1.0.0",
+  "description": "A mini agentic app builder: describe an app in plain English, get a live, runnable, editable app you can refine and save. Serverless-ready for Vercel.",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
+  "workspaces": [
+    "client"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n api,client -c blue,magenta \"npm:dev:api\" \"npm:dev:client\"",
+    "dev:api": "node dev-server.js",
+    "dev:client": "npm run dev --workspace client",
+    "build": "npm run build --workspace client"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "express": "^4.21.2"
+  }
+}
